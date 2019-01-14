@@ -12,7 +12,9 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('/index');
 });
 
 Route::resource('cadastro/tipos', 'TiposController');
+Route::resource('cadastro/editoras', 'EditorasController');
+Route::resource('cadastro/marcadores', 'MarcadoresController');
