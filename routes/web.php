@@ -11,11 +11,14 @@
 |
 */
 
-Route::get('/', function () {
-    return view('/index');
-});
+// Route::get('/', function () {
+//     return view('/index');
+// });
 
+Route::resource('/', 'DashboardController');
+Route::resource('cadastro/tipos', 'TiposController');
 Route::resource('cadastro/tipos', 'TiposController');
 Route::resource('cadastro/editoras', 'EditorasController');
 Route::resource('cadastro/marcadores', 'MarcadoresController');
 Route::resource('livros/compras', 'ComprasController');
+Route::resource('livros/livros', 'LivrosController');

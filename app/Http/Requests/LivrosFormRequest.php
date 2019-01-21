@@ -11,9 +11,9 @@ class LivrosFormRequest extends FormRequest
      *
      * @return bool
      */
-    public function authorize()
+     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,11 @@ class LivrosFormRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'nome'=> 'required|max:255',
+            'autor'=> 'required|max:255',
+            'id_editora'=> 'required',
+            'id_tipo'=> 'required',
+            'paginas'=> 'max:11',
         ];
     }
 }

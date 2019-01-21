@@ -88,11 +88,9 @@
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="/livros/compras"><i class="fa fa-circle-o"></i> Compras</a></li>
+                <li><a href="/livros/livros"><i class="fa fa-circle-o"></i>Meus Livros</a></li>
+                <li><a href="/livros/compras"><i class="fa fa-circle-o"></i> Desejos</a></li>
               </ul> 
-              <ul class="treeview-menu">
-                <li><a href="/cadastro/editoras"><i class="fa fa-circle-o"></i> Editoras</a></li>
-              </ul>
             </li>
             
             <li class="treeview">
@@ -102,8 +100,9 @@
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
+                <li><a href="/cadastro/editoras"><i class="fa fa-circle-o"></i> Editoras</a></li>
                 <li><a href="/cadastro/marcadores"><i class="fa fa-circle-o"></i> Marcadores</a></li>
-                <li><a href="/cadastro/tipos"><i class="fa fa-circle-o"></i> Tipos</a></li>
+                <li><a href="/cadastro/tipos"><i class="fa fa-circle-o"></i> Gênero</a></li>
               </ul>
             </li>        
 
