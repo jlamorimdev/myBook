@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Sistema com Laravel</title>
+  <title>Gerenciador de Livros</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.5 -->
@@ -88,6 +88,9 @@
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
+                <li><a href="/livros/compras"><i class="fa fa-circle-o"></i> Compras</a></li>
+              </ul> 
+              <ul class="treeview-menu">
                 <li><a href="/cadastro/editoras"><i class="fa fa-circle-o"></i> Editoras</a></li>
               </ul>
             </li>
@@ -169,7 +172,7 @@
     <div class="pull-right hidden-xs">
       <b>Versão</b> 5.3.0
     </div>
-    <strong>Copyright &copy; 2015-2020 <a href="https://www.linkedin.com/in/jo%C3%A3o-lucas-pinto-amorim-74740a167/">JL Amorim</a>.</strong> Todos os direitos reservados.
+    <strong>Copyright &copy; 2015-2020 <a href="https://www.linkedin.com/in/jo%C3%A3o-lucas-pinto-amorim-74740a167/" target="_blank">JL Amorim</a>.</strong> Todos os direitos reservados.
   </footer>
 
 
