@@ -29,7 +29,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        myBook
+                        my<b>Book</b>
                     </a>
                 </div>
 
