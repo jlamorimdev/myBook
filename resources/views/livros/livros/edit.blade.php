@@ -66,6 +66,23 @@
 		</div>
 
 		<div class="form-group">
+			<label>Tag</label>
+			<select name="id_marcador" class="form-control">
+				@foreach($marcadores as $marcador)
+				@if($marcador->id_marcador == $livro->id_marcador)
+				<option value="{{$marcador->id_marcador}}" selected>
+					{{$marcador->nome}}
+				</option>
+				@else
+				<option value="{{$marcador->id_marcador}}">
+					{{$marcador->nome}}
+				</option>
+				@endif
+				@endforeach
+			</select>			
+		</div>
+
+		<div class="form-group">
 			<label for="paginas">Páginas</label>
 			<input type="text" name="paginas" class="form-control" 
 			value="{{$livro->paginas}}" 

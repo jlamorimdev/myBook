@@ -4,19 +4,15 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Livros extends Model
+class LivroMarcador extends Model
 {
-    protected $table = 'livros';
-    protected $primaryKey = 'id_livro';
+     protected $table = 'livro_marcador';
+    protected $primaryKey = 'id_livro_marcador';
 
     public $timestamps = false;
     protected $fillable = [
-    	'nome',
-    	'autor',
-    	'id_editora',
-        'id_tipo',
+    	'id_livro',
     	'id_marcador',
-    	'paginas',
     ];
 
     protected $guarded = [];

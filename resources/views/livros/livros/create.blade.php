@@ -62,8 +62,20 @@
 		</div>
 	</div>
 
-
 	<div class="col-lg-6 col-sm-6 col-xs-12">
+		<div class="form-group">
+			<label>Marcador</label>
+			<select name="id_marcador" class="form-control">
+				@foreach($marcadores as $marcador)
+				<option value="{{$marcador->id_marcador}}">
+					{{$marcador->nome}}
+				</option>
+				@endforeach
+			</select>			
+		</div>
+	</div>
+
+	<div class="col-lg-2 col-sm-6 col-xs-12">
 		<div class="form-group">
 			<label for="paginas">Número de Páginas</label>
 			<input type="text" name="paginas" class="form-control" required value="{{old('paginas')}}" 
@@ -71,6 +83,8 @@
 		</div>
 	</div>
 </div>
+
+
 
 <div class="form-group">
 	<button class="btn btn-primary" type="submit">Salvar</button>

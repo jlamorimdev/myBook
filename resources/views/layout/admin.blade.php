@@ -29,7 +29,7 @@
           <!-- mini logo for sidebar mini 50x50 pixels -->
           <span class="logo-mini"><b>HV</b>V</span>
           <!-- logo for regular state and mobile devices -->
-          <span class="logo-lg"><b>GL - Livros</b></span>
+          <span class="logo-lg"><b>myBook</b></span>
         </a>
 
         <!-- Header Navbar: style can be found in header.less -->
@@ -47,20 +47,14 @@
               <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                   <small class="bg-red">Online</small>
-                  <span class="hidden-xs">João Lucas Amorim</span>
+                  <span class="hidden-xs">{{ Auth::user()->name }}</span>
                 </a>
                 <ul class="dropdown-menu">
-                  <!-- User image -->
-                  <li class="user-header">
-
-                  
-                  </li>
-                  
                   <!-- Menu Footer-->
                   <li class="user-footer">
 
                     <div class="pull-right">
-                      <a href="#" class="btn btn-default btn-flat">Fechar</a>
+                      <a href="{{URL::action('DashboardController@logout')}}" class="btn btn-default btn-flat">Logout</a>
                     </div>
                   </li>
                 </ul>

@@ -4,7 +4,7 @@
   <!-- small box -->
   <div class="small-box bg-green">
     <div class="inner">
-      <h3>53<sup style="font-size: 20px">%</sup></h3>
+      <h3>{{$lidos}}<sup style="font-size: 20px">%</sup></h3>
 
       <p>Lidos</p>
     </div>
@@ -12,7 +12,7 @@
       <img src="img/book-open.png" style="
     width: 60px;">
     </div>
-    <a href="#" class="small-box-footer">
+    <a href="/livros/livros"  class="small-box-footer">
       More info <i class="fa fa-arrow-circle-right""></i>
     </a>
   </div>
@@ -22,7 +22,7 @@
   <!-- small box -->
   <div class="small-box bg-red">
     <div class="inner">
-      <h3>53<sup style="font-size: 20px">%</sup></h3>
+      <h3>{{$nao_lidos}}<sup style="font-size: 20px">%</sup></h3>
 
       <p>Não lidos</p>
     </div>
@@ -30,7 +30,7 @@
       <img src="img/book.png" style="
     width: 60px;">
     </div>
-    <a href="#" class="small-box-footer">
+    <a href="/livros/livros" class="small-box-footer">
       More info <i class="fa fa-arrow-circle-right""></i>
     </a>
   </div>
@@ -40,7 +40,7 @@
   <!-- small box -->
   <div class="small-box bg-yellow">
     <div class="inner">
-      <h3>53<sup style="font-size: 20px">%</sup></h3>
+      <h3>{{$emprestados}}<sup style="font-size: 20px">%</sup></h3>
 
       <p>Emprestados</p>
     </div>
@@ -48,7 +48,7 @@
       <img src="img/emprestado.png" style="
     width: 60px;">
     </div>
-    <a href="#" class="small-box-footer">
+    <a href="/livros/livros"  class="small-box-footer">
       More info <i class="fa fa-arrow-circle-right""></i>
     </a>
   </div>
@@ -66,7 +66,7 @@
       <img src="img/pilha.png" style="
     width: 100px;">
     </div>
-    <a href="#" class="small-box-footer">
+    <a href="/livros/livros"  class="small-box-footer">
       More info <i class="fa fa-arrow-circle-right""></i>
     </a>
   </div>

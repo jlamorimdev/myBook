@@ -18,9 +18,10 @@
 					<th>Editora</th>
 					<th>Gênero</th>
 					<th>Numº de páginas</th>			
+					<th>Tag</th>			
 					<th>Opções</th>
 				</thead>
-               @foreach ($livros as $livro)
+				@foreach ($livros as $livro)
 				<tr>
 					<td>{{ $livro->id_livro}}</td>
 					<td>{{ $livro->nome}}</td>
@@ -29,8 +30,17 @@
 					<td>{{ $livro->tipo}}</td>
 					<td>{{ $livro->paginas}}</td>					
 					<td>
+						@if($livro->id_marcador==1)
+						<a class="btn btn-danger"><i class="fa fa-bookmark-o"></i></a>
+						@elseif($livro->id_marcador==2)
+						<a class="btn btn-success"><i class="fa fa-bookmark"></i></a>
+						@else
+						<a class="btn btn-warning"><i class="fa fa-bookmark"></i></a>
+						@endif
+					</td>					
+					<td>
 						<a href="{{URL::action('LivrosController@edit', $livro->id_livro)}}"><button class="btn btn-info">Editar</button></a>
-                         <a href="" data-target="#modal-delete-{{$livro->id_livro}}" data-toggle="modal"><button class="btn btn-danger">Excluir</button></a>
+						<a href="" data-target="#modal-delete-{{$livro->id_livro}}" data-toggle="modal"><button class="btn btn-danger">Excluir</button></a>
 					</td>
 				</tr>
 				@include('livros.livros.modal')
