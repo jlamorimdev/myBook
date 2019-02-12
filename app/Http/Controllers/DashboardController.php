@@ -16,27 +16,33 @@ class DashboardController extends Controller
  public function index(Request $request){
      $total_livros = DB::table('livros')
      ->where('condicao' ,'=' , '1')
+     ->where('usuario_id', '=' , '' . Auth::user()->id)
      ->count();	
 
      $nao_lidos = DB::table('livros')
      ->where('id_marcador' ,'=' , '1')
+     ->where('usuario_id', '=' , '' . Auth::user()->id)
      ->count();
 
      $nao_lidos_emprestados = DB::table('livros')
      ->where('id_marcador' ,'=' , '7')
+     ->where('usuario_id', '=' , '' . Auth::user()->id)
      ->count();
 
      $lidos_emprestados = DB::table('livros')
      ->where('id_marcador' ,'=' , '6')
+     ->where('usuario_id', '=' , '' . Auth::user()->id)
      ->count();
 
 
      $lidos = DB::table('livros')
      ->where('id_marcador' ,'=' , '2')
+     ->where('usuario_id', '=' , '' . Auth::user()->id)
      ->count();	
 
      $emprestados = DB::table('livros')
      ->where('id_marcador' ,'=' , '3')
+     ->where('usuario_id', '=' , '' . Auth::user()->id)
      ->count();	
 
      if ($total_livros == 0) {

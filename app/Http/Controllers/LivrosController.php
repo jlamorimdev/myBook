@@ -8,11 +8,11 @@ use App\Editoras;
 use App\Tipos;
 use Illuminate\Support\Facades\Redirect;
 use App\Http\Requests\LivrosFormRequest;
+use Auth;
 use DB;
 
 class LivrosController extends Controller
 {	
-	$usuario_id = Auth::user()->id;
 	
 	public function __construct(){
     	//
@@ -29,6 +29,7 @@ class LivrosController extends Controller
 				'e.nome as editora', 't.nome as tipo', 'm.nome as marcador')
 			->where('l.nome' , 'LIKE' , '%'.$query.'%')
 			->where('l.condicao', '=', '1')
+			 ->where('l.usuario_id', '=' , '' . Auth::user()->id)
 			->orderBy('id_livro', 'desc')
 			->paginate(7);
 			return view('livros.livros.index', [
@@ -61,6 +62,7 @@ class LivrosController extends Controller
 		$livro->nome=$request->get('nome');	
 		$livro->autor=$request->get('autor');   
 		$livro->paginas=$request->get('paginas'); 	
+		$livro->usuario_id=Auth::user()->id;	
 		$livro->condicao=1;	
 		$livro->save();
 		return Redirect::to('livros/livros');	
