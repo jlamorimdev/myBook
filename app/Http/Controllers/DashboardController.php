@@ -25,12 +25,12 @@ class DashboardController extends Controller
      ->count();
 
      $nao_lidos_emprestados = DB::table('livros')
-     ->where('id_marcador' ,'=' , '7')
+     ->where('id_marcador' ,'=' , '6')
      ->where('usuario_id', '=' , '' . Auth::user()->id)
      ->count();
 
      $lidos_emprestados = DB::table('livros')
-     ->where('id_marcador' ,'=' , '6')
+     ->where('id_marcador' ,'=' , '5')
      ->where('usuario_id', '=' , '' . Auth::user()->id)
      ->count();
 

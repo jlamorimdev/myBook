@@ -27,7 +27,7 @@
         <!-- Logo -->
         <a href="/" class="logo">
           <!-- mini logo for sidebar mini 50x50 pixels -->
-          <span class="logo-mini"><b>HV</b>V</span>
+          <span class="logo-mini">m<b>B</b></span>
           <!-- logo for regular state and mobile devices -->
           <span class="logo-lg"><b>myBook</b></span>
         </a>
@@ -98,22 +98,7 @@
                 <li><a href="/cadastro/marcadores"><i class="fa fa-circle-o"></i> Marcadores</a></li>
                 <li><a href="/cadastro/tipos"><i class="fa fa-circle-o"></i> Gênero</a></li>
               </ul>
-            </li>        
-
-            <li>
-              <a href="#">
-                <i class="fa fa-plus-square"></i> <span>Ajuda</span>
-                <small class="label pull-right bg-red">PDF</small>
-              </a>
-            </li>
-
-            <li>
-              <a href="#">
-                <i class="fa fa-info-circle"></i> <span>Sobre...</span>
-                <small class="label pull-right bg-yellow">IT</small>
-              </a>
-            </li>
-
+            </li> 
           </ul>
         </section>
         <!-- /.sidebar -->

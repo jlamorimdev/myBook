@@ -41,10 +41,12 @@ class LivrosController extends Controller
 	public function create(){	
 
 		$editoras=DB::table('editoras')
-		->where('condicao', '=', '1')->get();
+		->where('condicao', '=', '1')
+		->where('usuario_id', '=' , '' . Auth::user()->id)->get();
 
 		$tipos=DB::table('tipos')
-		->where('condicao', '=', '1')->get();
+		->where('condicao', '=', '1')
+		->where('usuario_id', '=' , '' . Auth::user()->id)->get();
 
 		$marcadores=DB::table('marcadores')
 		->where('condicao', '=', '1')->get();
