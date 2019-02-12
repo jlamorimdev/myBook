@@ -9,39 +9,57 @@ use DB;
 
 class DashboardController extends Controller
 {
-     public function __construct(){
+ public function __construct(){
     	//
-    }
+ }
 
-    public function index(Request $request){
-    	$total_livros = DB::table('livros')
-    	->where('condicao' ,'=' , '1')
-    	->count();	
+ public function index(Request $request){
+     $total_livros = DB::table('livros')
+     ->where('condicao' ,'=' , '1')
+     ->count();	
 
-    	$nao_lidos = DB::table('livros')
-    	->where('id_marcador' ,'=' , '1')
-    	->count();
+     $nao_lidos = DB::table('livros')
+     ->where('id_marcador' ,'=' , '1')
+     ->count();
+
+     $nao_lidos_emprestados = DB::table('livros')
+     ->where('id_marcador' ,'=' , '7')
+     ->count();
+
+     $lidos_emprestados = DB::table('livros')
+     ->where('id_marcador' ,'=' , '6')
+     ->count();
 
 
+     $lidos = DB::table('livros')
+     ->where('id_marcador' ,'=' , '2')
+     ->count();	
 
-    	$lidos = DB::table('livros')
-    	->where('id_marcador' ,'=' , '2')
-    	->count();	
+     $emprestados = DB::table('livros')
+     ->where('id_marcador' ,'=' , '3')
+     ->count();	
 
-    	$emprestados = DB::table('livros')
-    	->where('id_marcador' ,'=' , '3')
-    	->count();	
+     if ($total_livros == 0) {
+       $nao_lidos = 0;
+       $lidos = 0;
+       $emprestados = 0;
+   } else {
+     $nao_lidos = (($nao_lidos + $nao_lidos_emprestados) / $total_livros) * 100;
+     $lidos = (($lidos + $lidos_emprestados) / $total_livros) * 100;	
+     $emprestados = (($emprestados + $nao_lidos_emprestados + $lidos_emprestados) / $total_livros) * 100;	
 
-    	$nao_lidos = ($nao_lidos / $total_livros) * 100;	
-    	$lidos = ($lidos / $total_livros) * 100;	
-    	$emprestados = ($emprestados / $total_livros) * 100;	
+     $nao_lidos = number_format($nao_lidos, 0);            
+     $lidos = number_format($lidos, 0);            
+     $emprestados = number_format($emprestados, 0);             
+ }
 
-    	return view ("index", ["total_livros" => $total_livros, "lidos" => $lidos,
-    				"nao_lidos" => $nao_lidos, "emprestados" => $emprestados]);
-    }
 
-    public function logout(){
-        Auth::logout();
-        return Redirect::to('/');
-    }
+ return view ("index", ["total_livros" => $total_livros, "lidos" => $lidos,
+    "nao_lidos" => $nao_lidos, "emprestados" => $emprestados]);
+}
+
+public function logout(){
+    Auth::logout();
+    return Redirect::to('/');
+}
 }

@@ -11,7 +11,9 @@ use App\Http\Requests\LivrosFormRequest;
 use DB;
 
 class LivrosController extends Controller
-{
+{	
+	$usuario_id = Auth::user()->id;
+	
 	public function __construct(){
     	//
 	}
