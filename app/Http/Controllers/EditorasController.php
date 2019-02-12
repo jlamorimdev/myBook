@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Editoras;
 use Illuminate\Support\Facades\Redirect;
 use App\Http\Requests\EditorasFormRequest;
+use Auth;
 use DB;
 
 class EditorasController extends Controller
@@ -20,6 +21,7 @@ class EditorasController extends Controller
     		$editoras = DB::table('editoras')
     		->where('nome' , 'LIKE' , '%'.$query.'%')
             ->where('condicao' ,'=' , '1')
+            ->where('usuario_id', '=' , '' . Auth::user()->id)
     		->orderBy('id_editora', 'desc')
     		->paginate(7);
     		return view('cadastros.editoras.index', [
@@ -34,7 +36,8 @@ class EditorasController extends Controller
 
      public function store(EditorasFormRequest $request){
      	$editora = new Editoras;
-     	$editora->nome=$request->get('nome');	
+        $editora->nome=$request->get('nome');   
+     	$editora->usuario_id=Auth::user()->id;	        
         $editora->condicao=1;
      	$editora->save();
 
