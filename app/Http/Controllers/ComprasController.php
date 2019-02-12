@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Compras;
 use Illuminate\Support\Facades\Redirect;
 use App\Http\Requests\ComprasFormRequest;
+use Auth;
 use DB;
 
 class ComprasController extends Controller
@@ -20,6 +21,7 @@ class ComprasController extends Controller
     		$compras = DB::table('compras')
     		->where('livro' , 'LIKE' , '%'.$query.'%')
             ->where('condicao' ,'=' , '1')
+            ->where('usuario_id', '=' , '' . Auth::user()->id)
     		->orderBy('id_compra', 'desc')
     		->paginate(7);
     		return view('livros.compras.index', [
@@ -36,7 +38,8 @@ class ComprasController extends Controller
      	$compra = new Compras;
         $compra->livro=$request->get('livro');    
         $compra->autor=$request->get('autor');    
-     	$compra->valor=$request->get('valor');	
+        $compra->valor=$request->get('valor');  
+     	$compra->usuario_id=Auth::user()->id;  
         $compra->condicao=1;
      	$compra->save();
 
