@@ -23,7 +23,7 @@
 					<td>{{ $compra->id_compra}}</td>
 					<td>{{ $compra->livro}}</td>
 					<td>{{ $compra->autor}}</td>
-					<td>{{ $compra->valor}}</td>
+					<td>R$ {{ $compra->valor}}</td>
 					<td>
 						<a href="{{URL::action('ComprasController@edit',$compra->id_compra)}}"><button class="btn btn-info">Editar</button></a>
 						 <a href="" data-target="#modal-delete-{{$compra->id_compra}}" data-toggle="modal"><button class="btn btn-danger">Excluir</button></a>
