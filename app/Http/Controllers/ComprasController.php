@@ -11,67 +11,79 @@ use DB;
 
 class ComprasController extends Controller
 {
-     public function __construct(){
-    	//
-    }
+  public function __construct()
+  {
+    //
+  }
 
-    public function index(Request $request){	
-    	if($request){
-    		$query=trim($request->get('searchText'));
-    		$compras = DB::table('compras')
-    		->where('livro' , 'LIKE' , '%'.$query.'%')
-            ->where('condicao' ,'=' , '1')
-            ->where('usuario_id', '=' , '' . Auth::user()->id)
-    		->orderBy('id_compra', 'desc')
-    		->paginate(7);
-    		return view('livros.compras.index', [
-    			"compras" => $compras, "searchText"=>$query
-    		]);	
-    	}
+  public function index(Request $request)
+  {
+    if ($request) {
+      $query = trim($request->get('searchText'));
+      $compras = DB::table('compras')
+        ->where('livro', 'LIKE', '%' . $query . '%')
+        ->where('condicao', '=', '1')
+        ->where('usuario_id', '=', '' . Auth::user()->id)
+        ->orderBy('id_compra', 'desc')
+        ->paginate(7);
+      return view('livros.compras.index', [
+        "compras" => $compras, "searchText" => $query
+      ]);
     }
+  }
 
-     public function create(){	
-     	return view ("livros.compras.create");
-    }
+  public function create()
+  {
+    return view("livros.compras.create");
+  }
 
-     public function store(ComprasFormRequest $request){
-     	$compra = new Compras;
-        $compra->livro=$request->get('livro');    
-        $compra->autor=$request->get('autor');    
-        $compra->valor=$request->get('valor');  
-     	$compra->usuario_id=Auth::user()->id;  
-        $compra->condicao=1;
-     	$compra->save();
+  public function store(ComprasFormRequest $request)
+  {
+    $compra = new Compras;
+    $compra->livro = $request->get('livro');
+    $compra->autor = $request->get('autor');
+    $compra->valor = $request->get('valor');
+    $compra->usuario_id = Auth::user()->id;
+    $compra->condicao = 1;
+    $compra->save();
 
-     	return Redirect::to('livros/compras');	
-    }
+    return Redirect::to('livros/compras');
+  }
 
-     public function show($id){
-     	return view("livros.compras.show",
-     		[
-     			"compra"=>Compra::findOrFail($id)
-     		]);
-    }
+  public function show($id)
+  {
+    return view(
+      "livros.compras.show",
+      [
+        "compra" => Compra::findOrFail($id)
+      ]
+    );
+  }
 
-     public function edit($id){
-     return view("livros.compras.edit",
-     		[
-     			"compra"=>Compras::findOrFail($id)
-     		]);	
-    }
+  public function edit($id)
+  {
+    return view(
+      "livros.compras.edit",
+      [
+        "compra" => Compras::findOrFail($id)
+      ]
+    );
+  }
 
-      public function update(ComprasFormRequest $request, $id){
-        $compra=Compras::findOrFail($id);
-        $compra->livro=$request->get('livro');    
-        $compra->autor=$request->get('autor');    
-        $compra->valor=$request->get('valor');  
-        $compra->update();
-        return Redirect::to('livros/compras');
-    }
-     public function destroy($id){	
-     	$compra=Compras::findOrFail($id);
-     	$compra->condicao = '0';     	
-     	$compra->update();
-     	return Redirect::to('livros/compras');
-    }
+  public function update(ComprasFormRequest $request, $id)
+  {
+    $compra = Compras::findOrFail($id);
+    $compra->livro = $request->get('livro');
+    $compra->autor = $request->get('autor');
+    $compra->valor = $request->get('valor');
+    $compra->update();
+    return Redirect::to('livros/compras');
+  }
+  public function destroy($id)
+  {
+    $compra = Compras::findOrFail($id);
+    $compra->condicao = '0';
+    $compra->update();
+    return Redirect::to('livros/compras');
+  }
 }

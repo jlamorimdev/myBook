@@ -12,7 +12,7 @@ class ComprasFormRequest extends FormRequest
      * @return bool
      */
     public function authorize()
-   {
+    {
         return true;
     }
 
@@ -24,9 +24,9 @@ class ComprasFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'livro'=> 'required|max:255',
-            'autor'=> 'max:255',
-            'valor'=> 'numeric',
+            'livro' => 'required|max:255',
+            'autor' => 'max:255',
+            'valor' => 'numeric',
         ];
     }
 }

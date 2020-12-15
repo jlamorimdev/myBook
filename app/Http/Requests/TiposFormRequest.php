@@ -24,7 +24,7 @@ class TiposFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'nome'=> 'required|max:255',
+            'nome' => 'required|max:255',
         ];
     }
 }

@@ -24,8 +24,8 @@ class LivroMarcadorFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'id_livro'=>'required',
-            'id_marcador'=>'required'
+            'id_livro' => 'required',
+            'id_marcador' => 'required'
         ];
     }
 }
