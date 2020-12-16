@@ -11,10 +11,6 @@ use DB;
 
 class ComprasController extends Controller
 {
-  public function __construct()
-  {
-    //
-  }
 
   public function index(Request $request)
   {
@@ -32,9 +28,29 @@ class ComprasController extends Controller
     }
   }
 
+  public function show($id)
+  {
+    return view(
+      "livros.compras.show",
+      [
+        "compra" => Compra::findOrFail($id)
+      ]
+    );
+  }
+
   public function create()
   {
     return view("livros.compras.create");
+  }
+
+  public function edit($id)
+  {
+    return view(
+      "livros.compras.edit",
+      [
+        "compra" => Compras::findOrFail($id)
+      ]
+    );
   }
 
   public function store(ComprasFormRequest $request)
@@ -50,26 +66,6 @@ class ComprasController extends Controller
     return Redirect::to('livros/compras');
   }
 
-  public function show($id)
-  {
-    return view(
-      "livros.compras.show",
-      [
-        "compra" => Compra::findOrFail($id)
-      ]
-    );
-  }
-
-  public function edit($id)
-  {
-    return view(
-      "livros.compras.edit",
-      [
-        "compra" => Compras::findOrFail($id)
-      ]
-    );
-  }
-
   public function update(ComprasFormRequest $request, $id)
   {
     $compra = Compras::findOrFail($id);
@@ -79,6 +75,7 @@ class ComprasController extends Controller
     $compra->update();
     return Redirect::to('livros/compras');
   }
+  
   public function destroy($id)
   {
     $compra = Compras::findOrFail($id);

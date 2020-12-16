@@ -31,10 +31,30 @@ class EditorasController extends Controller
 			]);
 		}
 	}
+	
+	public function show($id)
+	{
+		return view(
+			"cadastros.editoras.show",
+			[
+				"editora" => Editora::findOrFail($id)
+			]
+		);
+	}
 
 	public function create()
 	{
 		return view("cadastros.editoras.create");
+	}
+	
+	public function edit($id)
+	{
+		return view(
+			"cadastros.editoras.edit",
+			[
+				"editora" => Editoras::findOrFail($id)
+			]
+		);
 	}
 
 	public function store(EditorasFormRequest $request)
@@ -48,26 +68,6 @@ class EditorasController extends Controller
 		return Redirect::to('cadastro/editoras');
 	}
 
-	public function show($id)
-	{
-		return view(
-			"cadastros.editoras.show",
-			[
-				"editora" => Editora::findOrFail($id)
-			]
-		);
-	}
-
-	public function edit($id)
-	{
-		return view(
-			"cadastros.editoras.edit",
-			[
-				"editora" => Editoras::findOrFail($id)
-			]
-		);
-	}
-
 	public function update(EditorasFormRequest $request, $id)
 	{
 		$editora = Editoras::findOrFail($id);
@@ -75,6 +75,7 @@ class EditorasController extends Controller
 		$editora->update();
 		return Redirect::to('cadastro/editoras');
 	}
+
 	public function destroy($id)
 	{
 		$editora = Editoras::findOrFail($id);

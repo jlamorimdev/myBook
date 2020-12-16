@@ -30,9 +30,29 @@ class MarcadoresController extends Controller
 		}
 	}
 
+	public function show($id)
+	{
+		return view(
+			"cadastros.marcadores.show",
+			[
+				"marcador" => Marcadores::findOrFail($id)
+			]
+		);
+	}
+
 	public function create()
 	{
 		return view("cadastros.marcadores.create");
+	}
+	
+	public function edit($id)
+	{
+		return view(
+			"cadastros.marcadores.edit",
+			[
+				"marcador" => Marcadores::findOrFail($id)
+			]
+		);
 	}
 
 	public function store(MarcadoresFormRequest $request)
@@ -45,26 +65,6 @@ class MarcadoresController extends Controller
 		return Redirect::to('cadastro/marcadores');
 	}
 
-	public function show($id)
-	{
-		return view(
-			"cadastros.marcadores.show",
-			[
-				"marcador" => Marcadores::findOrFail($id)
-			]
-		);
-	}
-
-	public function edit($id)
-	{
-		return view(
-			"cadastros.marcadores.edit",
-			[
-				"marcador" => Marcadores::findOrFail($id)
-			]
-		);
-	}
-
 	public function update(MarcadoresFormRequest $request, $id)
 	{
 		$marcador = Marcadores::findOrFail($id);
@@ -72,6 +72,7 @@ class MarcadoresController extends Controller
 		$marcador->update();
 		return Redirect::to('cadastro/marcadores');
 	}
+
 	public function destroy($id)
 	{
 		$marcador = Marcadores::findOrFail($id);

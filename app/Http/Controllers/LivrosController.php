@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Livros;
-use App\Editoras;
-use App\Tipos;
 use Illuminate\Support\Facades\Redirect;
 use App\Http\Requests\LivrosFormRequest;
 use Auth;
@@ -48,9 +46,13 @@ class LivrosController extends Controller
 		}
 	}
 
+	public function show($id)
+	{
+		return Redirect::to('livros/livros');
+	}
+
 	public function create()
 	{
-
 		$editoras = DB::table('editoras')
 			->where('condicao', '=', '1')
 			->where('usuario_id', '=', '' . Auth::user()->id)->get();
@@ -64,27 +66,6 @@ class LivrosController extends Controller
 
 		return view("livros.livros.create", ["editoras" =>
 		$editoras, "tipos" => $tipos, "marcadores" => $marcadores]);
-	}
-
-
-	public function store(LivrosFormRequest $request)
-	{
-		$livro = new Livros;
-		$livro->id_editora = $request->get('id_editora');
-		$livro->id_tipo = $request->get('id_tipo');
-		$livro->id_marcador = $request->get('id_marcador');
-		$livro->nome = $request->get('nome');
-		$livro->autor = $request->get('autor');
-		$livro->paginas = $request->get('paginas');
-		$livro->usuario_id = Auth::user()->id;
-		$livro->condicao = 1;
-		$livro->save();
-		return Redirect::to('livros/livros');
-	}
-
-	public function show($id)
-	{
-		return Redirect::to('livros/livros');
 	}
 
 	public function edit($id)
@@ -105,6 +86,21 @@ class LivrosController extends Controller
 		$editoras, "tipos" => $tipos, "marcadores" => $marcadores]);
 	}
 
+	public function store(LivrosFormRequest $request)
+	{
+		$livro = new Livros;
+		$livro->id_editora = $request->get('id_editora');
+		$livro->id_tipo = $request->get('id_tipo');
+		$livro->id_marcador = $request->get('id_marcador');
+		$livro->nome = $request->get('nome');
+		$livro->autor = $request->get('autor');
+		$livro->paginas = $request->get('paginas');
+		$livro->usuario_id = Auth::user()->id;
+		$livro->condicao = 1;
+		$livro->save();
+		return Redirect::to('livros/livros');
+	}
+
 	public function update(LivrosFormRequest $request, $id)
 	{
 		$livro = Livros::findOrFail($id);
@@ -117,6 +113,7 @@ class LivrosController extends Controller
 		$livro->update();
 		return Redirect::to('livros/livros');
 	}
+
 	public function destroy($id)
 	{
 		$livro = Livros::findOrFail($id);
